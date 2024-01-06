@@ -1,12 +1,12 @@
 import puppeteer from 'puppeteer';
 import DETAILS from '../../config.js'
 
-async function get_cookies() {
+export default async function login({ testing=false, headless=true}) {
     const username = DETAILS.username;
     const password = DETAILS.pass;
 
-    
-    const browser = await puppeteer.launch({ headless: false });
+
+    const browser = await puppeteer.launch({ headless: headless });
     const page = await browser.newPage();
     await page.setViewport({ width: 1200, height: 720 });
 
@@ -22,15 +22,14 @@ async function get_cookies() {
         await page.waitForSelector('#Username', { visible: true });
         await page.type('#Username', username.toString());
 
-        // Capture screenshots for debugging
+        // Capture screenshots (for some reason this makes it work)
         await page.screenshot({ path: 'before-submit.png' });
 
         await Promise.all([
             page.waitForNavigation({ waitUntil: 'networkidle0' }),
-            page.click('input[type=submit]'), // Using click instead of form submit
+            page.click('input[type=submit]'), 
         ]);
 
-        // Additional delay to ensure all redirects and scripts are executed
         await page.waitForTimeout(5000);
 
         // Capture screenshot after navigation
@@ -45,7 +44,14 @@ async function get_cookies() {
         let wait = await page.$x(`/html/body/div[2]/div/form/div/div/div/div/div/div[2]/div[1]/div/div/form/div/span[1]/input`)
         await wait[0].click()
         await page.waitForTimeout(5000);
+
+        if(testing){
+            browser.close();
+            return true
+        }
     } catch (err) {
         console.error(err);
     }
+
+    return [page, browser];
 }

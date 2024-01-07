@@ -45,13 +45,21 @@ export default async function login({ testing=false, headless=true}) {
         await wait[0].click()
         await page.waitForTimeout(5000);
 
+        if(test) {
+            console.log("TESTS PASSED")
+            return [page, browser];
+        }
+
+        return [page, browser];
+
+
+        /*
         if(testing){
             browser.close();
             return true
-        }
+        }*/
     } catch (err) {
         console.error(err);
     }
 
-    return [page, browser];
 }

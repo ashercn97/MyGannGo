@@ -1,8 +1,10 @@
 import puppeteer from 'puppeteer';
+import dotenv from 'dotenv';
 
 export default async function login({ testing=false, headless=true}) {
-    const username = process.env.username;
-    const password = process.env.pass;
+    dotenv.config();
+    const username = process.env.USERNAME;
+    const password = process.env.PASS;
 
 
     const browser = await puppeteer.launch({ headless: headless });

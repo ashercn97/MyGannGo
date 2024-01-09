@@ -17,6 +17,8 @@ Then you are ready to go!
 ## How it works
 MyGannGo utilizes mainly puppeteer to interact with MyGann. For getting your schedule or your assignment center, it has a proxy server so the requests don't get blocked. 
 
+## What I ask of you!
+I would LOVE if you could give me suggestions about what I should add to this:)
 ## Future Plans
 * possibly make a python version of this
 * move to typescript

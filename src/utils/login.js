@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer';
-import DETAILS from '../../config.js'
 
 export default async function login({ testing=false, headless=true}) {
     const username = process.env.username;

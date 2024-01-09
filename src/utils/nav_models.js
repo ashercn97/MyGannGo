@@ -277,6 +277,27 @@ class NavParent {
 }
 
 
+/*
+    CURRENT NAVIGATION OPTIONS:
+
+    - Progress_Navbar (the navbar at the top of the page
+        when you click on progress or assignment schedule or whatever)
+        - Progress_Button_List (the button that says "progress")
+        - Schedule_Button_List (the button that says "schedule")
+
+    - My_Day_Hover (the hoverable thing (this was a total pain to make)
+    that when you hover over shows like all the things)
+        - Progress_Button (the button that says "progress")
+        - Schedule_Button (the button that says "schedule")
+        - Assignment_Center_Button (the button that says "assignment center")
+        - Conduct_Button (the button that says "conduct")
+    
+    I WANT TO ADD MORE BUT I DONT KNOW WHAT PPL NEED
+    ... 
+    the way i say people like someone will actually use this lol
+    
+
+*/
 class NavNested {
     constructor(config) {
         this.progress_navbar = new NavParent({

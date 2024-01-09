@@ -3,12 +3,14 @@ import { createProxyMiddleware } from 'http-proxy-middleware';
 
 const app = express();
 
+
 // Proxy endpoint
 app.use('/api/assignments', createProxyMiddleware({ 
     target: 'https://gannacademy.myschoolapp.com', // Target API
     changeOrigin: true,
     pathRewrite: {
         '^/api/assignments': '/api/DataDirect/AssignmentCenterAssignments/', // Rewrite path
+        '^/api/schedule': '/api/schedule/MyDayCalendarStudentList/'
     },
     onProxyReq: (proxyReq, req, res) => {
         // Add custom headers from the incoming request

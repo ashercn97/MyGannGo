@@ -2,8 +2,8 @@ import puppeteer from 'puppeteer';
 import DETAILS from '../../config.js'
 
 export default async function login({ testing=false, headless=true}) {
-    const username = DETAILS.username;
-    const password = DETAILS.pass;
+    const username = process.env.username;
+    const password = process.env.pass;
 
 
     const browser = await puppeteer.launch({ headless: headless });
@@ -45,7 +45,7 @@ export default async function login({ testing=false, headless=true}) {
         await wait[0].click()
         await page.waitForTimeout(5000);
 
-        if(test) {
+        if(testing) {
             console.log("TESTS PASSED")
             return [page, browser];
         }

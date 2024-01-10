@@ -326,6 +326,17 @@ class NavNested {
             ]
         })
 
+        this.my_profile = new NavParent({
+            name: "My_Profile",
+            config: config,
+            xpath: "/html/body/div[2]/div/div[6]/div[1]/div[1]/div/div/div[4]/div/ul/li[4]/a",
+            type: "click",
+            children: [
+                new NavItem({name: "Profile", xpath: "/html/body/div[2]/div/div[6]/div[1]/div[1]/div/div/div[4]/div/ul/li[4]/div[2]/ul/li[1]/a", type: "click"}),
+                // add others, not needed currently
+            ]
+        })
+
     }
 }
 

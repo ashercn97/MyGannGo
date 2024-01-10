@@ -4,6 +4,8 @@ import { parse_cookies, make_cookie_string, orderCookies } from './parse_cookies
 async function get_cookies({ log=true, headless=true, stringify=false }) {
     const [page, browser] = await login({ testing: false, headless: headless});
 
+
+
     const link = await page.$x("/html/body/div[2]/div/div[6]/div[3]/div/ul/li[3]/a");
     if (link.length > 0) {
         await link[0].click();

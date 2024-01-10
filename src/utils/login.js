@@ -53,7 +53,6 @@ export default async function login({ testing=false, headless=true}) {
 
         return [page, browser];
 
-
         /*
         if(testing){
             browser.close();

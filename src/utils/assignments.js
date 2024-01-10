@@ -1,8 +1,9 @@
 import get_cookies from './cookies.js';
+import dotenv from 'dotenv';
 
 export default async function get_assignment_center({ log=true, headless=true}) {
     const cookies = await get_cookies({ log: log, stringify: true, headless: headless });
-
+    dotenv.config()
     const date = new Date();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Adds leading zero if needed
     const day = String(date.getDate()).padStart(2, '0');        // Adds leading zero if needed

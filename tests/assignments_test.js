@@ -1,6 +1,6 @@
-import get_assignment_center from "../src/utils/assignments";
+import get_assignment_center from "../src/utils/assignments.js";
 
-(async () => {
+const test = (async () => {
     try {
 
         console.log("HINT: if there is an error, make sure proxy server is running")
@@ -16,7 +16,9 @@ import get_assignment_center from "../src/utils/assignments";
     
         finally {
             // Close the browser after all operations
-            await browser.close();
+            console.log("YAY")
         }
 
 })
+
+test();

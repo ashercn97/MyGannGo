@@ -1,6 +1,6 @@
 import date_form from "./today.js";
 import get_cookies from "./cookies.js";
-
+import dotenv from 'dotenv';
 
 /*
     takes parameters:
@@ -14,14 +14,13 @@ import get_cookies from "./cookies.js";
 
 const get_schedule = async ({user_date = -1, log = false, headless = true}) => {
     const date = date_form({user_date: user_date});
-
+    dotenv.config();
     const cookies = await get_cookies({log: log, headless: headless, stringify: true}); // stringify b/c it needs it for the header
-
-    const res = await fetch("http://localhost:3000/api/schedule/?scheduleDate=1%2F8%2F2024&personaId=2", {
+    const port = process.env.PORT || 3000;
+    const res = await fetch(`https://gannacademy.myschoolapp.com/api/schedule/MyDayCalendarStudentList/?scheduleDate=&personaId=2`, {
         "headers": {
           "accept": "application/json, text/javascript, */*; q=0.01",
           "accept-language": "en-US,en;q=0.9,la;q=0.8",
-          "requestverificationtoken": "NLV2acsGuGFvT6b-ADjJbM0uotbZEYoB_vwrCAebIon4kLgohbSoIgq_05pexJGqHXrD6_p7wP2dUBii4YOuZWRA1dutYyCvvbDzKHIm25Y1 65d14fc4-29df-4033-b8e5-ee5178c69505",
           "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"",
           "sec-ch-ua-mobile": "?0",
           "sec-ch-ua-platform": "\"macOS\"",
@@ -35,8 +34,12 @@ const get_schedule = async ({user_date = -1, log = false, headless = true}) => {
           "Referrer-Policy": "strict-origin-when-cross-origin"
         },
         "body": null,
-        "method": "GET"
+        "method": "GET",
+        "mode": "cors",
+        "credentials": "include"
       });
+
+
 
     if(log) {
         console.log("raw response: ", res)
